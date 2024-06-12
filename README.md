@@ -1,26 +1,18 @@
-## Requirements:
+## Requirements
 
 1. Server with [caprover](https://caprover.com/) installed and ready to go
 2. Postgres database on that server (one-click apps rock!)
-3. Firebase project (google cloud storage also works)
+3. A google cloud storage bucket with versioning enabled
 
 ## Usage
 
-1. Clone this repository
-```
-git clone https://github.com/dara-network/caprover-postgres-backup.git 
-```
-2. Create a caprover app (✅ Has Persistent Data)
-    
-    1. Force HTTPS, Enable basic auth - Allowing prying eyes to use this app is dangerous! 
-    
-    2. Specify environment variables, using [`.env.example`](.env.example) as a template
-    
-    3. Add a persistent directory. Path in App: `/volumes/crontab-ui` (same as `CRON_DB_PATH` environment variable)
-    
-    4. Set Container HTTP Port: `8000`
-    
-3. Deploy! (using [caprover CLI](https://caprover.com/docs/get-started.html#step-3-install-caprover-cli))
-```
-caprover deploy
-```
+1. Create a caprover app. 
+2. Check "Do not expose as web-app"
+3. Specify the following environment variables in the App Configs tab
+    - `BUCKET_PATH` - The `gs://<bucket>/<filename>.dump` path to the GCS bucket where the db dump should be stored
+    - `GOOGLE_APPLICATION_CREDENTIALS_JSON` - A JSON service account key, that has permission to create/replace objects in above bucket.
+    - `PGHOST`, `PGPORT` `PGDATABASE`, `PGUSER`, `PGPASSWORD` - Should point to your db
+4. Add this github repo in the deployment tab, press force deploy
+
+<img width="970" alt="image" src="https://github.com/GooeyAI/caprover-postgres-backup/assets/19492893/8522f64a-bd03-44da-bed0-5fb7099122ad">
+
