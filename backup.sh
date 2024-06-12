@@ -1,5 +1,4 @@
 set -ex
 
-fname=$(date +"%Y-%m-%d_%I-%M-%S_%p").dump
-pg_dump -Fc -f "$fname"
-gsutil cp file://"$fname" "$BUCKET_PATH"
+pg_dump -Fc -f db.dump
+gsutil cp file://db.dump "$BUCKET_PATH"
