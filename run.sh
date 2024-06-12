@@ -11,5 +11,5 @@ gcloud auth activate-service-account --key-file serviceAccountKey.json
 
 while true; do
   sh backup.sh
-  sleep "${SLEEP:-12h}"
+  sleep "${SLEEP:-24h}"
 done
