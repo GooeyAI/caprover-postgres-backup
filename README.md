@@ -14,5 +14,3 @@
     - `PGHOST`, `PGPORT` `PGDATABASE`, `PGUSER`, `PGPASSWORD` - Should point to your db
 4. Add this github repo in the deployment tab, press force deploy
 
-<img width="970" alt="image" src="https://github.com/GooeyAI/caprover-postgres-backup/assets/19492893/8522f64a-bd03-44da-bed0-5fb7099122ad">
-
