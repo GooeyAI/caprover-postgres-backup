@@ -9,6 +9,8 @@ WORKDIR /tmp
 COPY ./restore.sh ./restore.sh
 
 RUN chmod 0777 ./restore.sh
+RUN mkdir $PGDATA
+RUN chown postgres:postgres $PGDATA
 
 USER postgres
 
