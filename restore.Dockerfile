@@ -11,6 +11,7 @@ COPY ./run-restore.sh ./run-restore.sh
 
 RUN mkdir -p $PGDATA
 RUN chown -R postgres:postgres $PGDATA
+RUN chmod 0700 $PGDATA
 
 USER postgres
 
