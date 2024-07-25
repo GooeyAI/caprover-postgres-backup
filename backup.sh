@@ -1,4 +1,3 @@
 set -ex
 
-time pg_dump -Fc -f db.dump
-gsutil cp file://db.dump "$BUCKET_PATH"
+time pg_basebackup -D - -F tar -X fetch --compress=zstd -P | gsutil cp - $BUCKET_PATH
