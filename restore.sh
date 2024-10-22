@@ -2,7 +2,7 @@ pg_isready && pg_ctl -D $PGDATA stop && echo "Stopped running database..."
 
 echo "Deleting existing DB and restoring from $BUCKET_PATH"
 rm -rf $PGDATA/*
-gsutil cp $BUCKET_PATH - | tar -I zstd -xvf - -C $PGDATA
+gsutil cp $BUCKET_PATH - | tar -I zstd -xf - -C $PGDATA
 
 chmod 0700 $PGDATA
 
