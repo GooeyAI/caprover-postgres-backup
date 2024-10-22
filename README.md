@@ -24,7 +24,7 @@ Reference: https://www.postgresql.org/docs/current/continuous-archiving.html
     - `BUCKET_PATH` - The `gs://<bucket>/<filename>.tar.zst` path to the GCS bucket where the db backup should be stored
     - `GOOGLE_APPLICATION_CREDENTIALS_JSON` - A JSON service account key, that has permission to create/replace objects in above bucket.
     - `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD` - Should point to your db
-4. Add this github repo in the deployment tab, press force deploy
+4. Add this github repo in the deployment tab, set captain definition file path to `restore.captain-definition`, and press force deploy.
 
 Ideally, keep a Caprover app configured with the above settings and instance count = 0. When you need to restore,
 set the instance count to 1, and it will automatically restore from the latest backup. Scale down the instance
